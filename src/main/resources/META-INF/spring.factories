@@ -1,0 +1,1 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.atesfactory.evrl.configuration.EvrlConfiguration

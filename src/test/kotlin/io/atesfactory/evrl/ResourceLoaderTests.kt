@@ -1,5 +1,11 @@
 package io.atesfactory.evrl
 
+import io.atesfactory.evrl.loader.LoaderRegistry
+import io.atesfactory.evrl.resourcefactory.ResourceFactoryException
+import io.atesfactory.evrl.transformer.Transformer
+import io.atesfactory.evrl.transformer.TransformerConfig
+import io.atesfactory.evrl.transformer.TransformerContext
+import io.atesfactory.evrl.transformer.TransformerRegistry
 import java.io.FileNotFoundException
 import java.io.Serializable
 import java.time.LocalDateTime
@@ -125,7 +131,8 @@ class ResourceLoaderTests {
     fun `should throw exception on incompatible destination type`() {
         val content = "io.atesfactory.evrl.example5"
 
-        TransformerRegistry.register("not-compatible-destination-type", listOf(object : Transformer<String, LocalDateTime> {
+        TransformerRegistry.register("not-compatible-destination-type", listOf(object :
+            Transformer<String, LocalDateTime> {
             override fun transform(transformerContext: TransformerContext, transformerConfig: TransformerConfig, i: Serializable): LocalDateTime {
                 return LocalDateTime.now()
             }

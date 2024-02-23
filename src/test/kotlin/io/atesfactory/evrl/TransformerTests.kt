@@ -1,5 +1,10 @@
 package io.atesfactory.evrl
 
+import io.atesfactory.evrl.configuration.EvrlSpringContext
+import io.atesfactory.evrl.transformer.TransformerConfig
+import io.atesfactory.evrl.transformer.TransformerContext
+import io.atesfactory.evrl.transformer.TransformerException
+import io.atesfactory.evrl.transformer.TransformerRegistry
 import java.io.File
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -10,7 +15,10 @@ import org.springframework.core.env.Environment
 
 class TransformerTests {
 
-    private var evrlSpringContext = EvrlSpringContext(Mockito.mock(ApplicationContext::class.java), Mockito.mock(Environment::class.java))
+    private var evrlSpringContext = EvrlSpringContext(
+        Mockito.mock(ApplicationContext::class.java),
+        Mockito.mock(Environment::class.java)
+    )
 
     @Test
     fun `should get bytes from string`() {
@@ -18,7 +26,10 @@ class TransformerTests {
         val transformerName = "text"
         val transformer = TransformerRegistry.get(transformerName, String::class.java)
         val transformerConfig = TransformerConfig(transformerName)
-        val transformed = transformer.transform(TransformerContext(evrlSpringContext), transformerConfig, content) as ByteArray
+        val transformed = transformer.transform(
+            TransformerContext(
+                evrlSpringContext
+            ), transformerConfig, content) as ByteArray
 
         assertEquals(content, String(transformed, Charsets.UTF_8))
     }
@@ -28,8 +39,14 @@ class TransformerTests {
         val content = "Example2Text\n"
         val transformerName = "file"
         val transformer = TransformerRegistry.get(transformerName, ByteArray::class.java)
-        val transformerConfig = TransformerConfig(transformerName, config = listOf("./test-example.txt"))
-        val transformed = transformer.transform(TransformerContext(evrlSpringContext), transformerConfig, content.toByteArray(Charsets.UTF_8)) as File
+        val transformerConfig = TransformerConfig(
+            transformerName,
+            listOf("./test-example.txt")
+        )
+        val transformed = transformer.transform(
+            TransformerContext(
+                evrlSpringContext
+            ), transformerConfig, content.toByteArray(Charsets.UTF_8)) as File
         try {
             assertEquals(content, String(transformed.readBytes(), Charsets.UTF_8))
         } finally {
@@ -42,8 +59,12 @@ class TransformerTests {
         val content = "Example2Text\n"
         val transformerName = "file"
         val transformer = TransformerRegistry.get(transformerName, ByteArray::class.java)
-        val transformerConfig = TransformerConfig(transformerName, config = listOf())
-        val transformed = transformer.transform(TransformerContext(evrlSpringContext), transformerConfig, content.toByteArray(Charsets.UTF_8)) as File
+        val transformerConfig =
+            TransformerConfig(transformerName, listOf())
+        val transformed = transformer.transform(
+            TransformerContext(
+                evrlSpringContext
+            ), transformerConfig, content.toByteArray(Charsets.UTF_8)) as File
         try {
             assertEquals(content, String(transformed.readBytes(), Charsets.UTF_8))
         } finally {
@@ -56,8 +77,14 @@ class TransformerTests {
         val content = "Example2Text\n"
         val transformerName = "file"
         val transformer = TransformerRegistry.get(transformerName, ByteArray::class.java)
-        val transformerConfig = TransformerConfig(transformerName, config = listOf("./test/test-example.txt"))
-        val transformed = transformer.transform(TransformerContext(evrlSpringContext), transformerConfig, content.toByteArray(Charsets.UTF_8)) as File
+        val transformerConfig = TransformerConfig(
+            transformerName,
+            listOf("./test/test-example.txt")
+        )
+        val transformed = transformer.transform(
+            TransformerContext(
+                evrlSpringContext
+            ), transformerConfig, content.toByteArray(Charsets.UTF_8)) as File
         try {
             assertEquals(content, String(transformed.readBytes(), Charsets.UTF_8))
         } finally {
@@ -75,7 +102,10 @@ class TransformerTests {
         val transformerName = "base64"
         val transformer = TransformerRegistry.get(transformerName, String::class.java)
         val transformerConfig = TransformerConfig(transformerName)
-        val transformed = transformer.transform(TransformerContext(evrlSpringContext), transformerConfig, content) as ByteArray
+        val transformed = transformer.transform(
+            TransformerContext(
+                evrlSpringContext
+            ), transformerConfig, content) as ByteArray
 
         assertEquals("HELLO", String(transformed, Charsets.UTF_8))
     }

@@ -1,5 +1,15 @@
 package io.atesfactory.evrl
 
+import io.atesfactory.evrl.loader.Loader
+import io.atesfactory.evrl.loader.LoaderContext
+import io.atesfactory.evrl.loader.LoaderRegistry
+import io.atesfactory.evrl.resourcefactory.ResourceFactory
+import io.atesfactory.evrl.resourcefactory.ResourceFactoryContext
+import io.atesfactory.evrl.resourcefactory.ResourceFactoryRegistry
+import io.atesfactory.evrl.transformer.Transformer
+import io.atesfactory.evrl.transformer.TransformerConfig
+import io.atesfactory.evrl.transformer.TransformerContext
+import io.atesfactory.evrl.transformer.TransformerRegistry
 import java.io.ByteArrayInputStream
 import java.io.Serializable
 import org.junit.jupiter.api.AfterEach
