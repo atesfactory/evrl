@@ -192,7 +192,7 @@ Output instances are either `org.springframework.core.io.InputStreamResource` or
 * Transformer-Chain has to end either with java.io.File, or a byte[].
 To overcome this limitation you can add custom components
 ## License
-Apache 2.0
+MIT
 
 ## Development
 I am willing to extend EVRL if there is demand for it. 
