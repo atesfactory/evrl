@@ -17,10 +17,10 @@ import org.springframework.core.io.ResourceLoader
 const val PROTOCOL_PREFIX = "evrl://"
 
 @Configuration
-class EnvResourceLoaderConfiguration {
+@ConditionalOnProperty("io.atesfactory.evrl.enabled", havingValue = "true", matchIfMissing = true)
+class EvrlConfiguration {
 
     @Bean
-    @ConditionalOnProperty("io.atesfactory.evrl.enabled", havingValue = "true", matchIfMissing = true)
     fun envResourceLoaderProtocolRegistrar(applicationContext: ApplicationContext, environment: Environment): ProtocolRegistrar {
         return ProtocolRegistrar(EvrlSpringContext(applicationContext, environment))
     }
