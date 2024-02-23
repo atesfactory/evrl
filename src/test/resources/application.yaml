@@ -1,0 +1,12 @@
+io.atesfactory:
+  evrl:
+    example1-text: "myText"
+    example1: evrl://text/content:${io.atesfactory.evrl.example1-text}
+    example2: classpath:example2.txt
+    example3:
+      file-based: evrl://text|file:./from-properties-test-file/content:${io.atesfactory.evrl.example3.file-based-text}
+      file-based-text: "fileBasedText"
+      input-stream-based: evrl://text/content:${io.atesfactory.evrl.example3.input-stream-based-text}
+      input-stream-based-text: "inputStreamBasedText"
+    example4: evrl://base64:mime/file:example4.txt
+    example5: HELLO
