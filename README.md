@@ -23,11 +23,19 @@ Below you can see the EVRL usage, available loaders, and transformers.
 * Spring Boot 3.x.x+/2.7.x+
 * Java 8
 ### Install
-EVRL is ready to go as soon as the dependency is present:
+EVRL is ready to go as soon as the dependency is present.
+
+Maven:
 ```xml
-<depencency>
-  ... 
-</depencency>
+<dependency>
+  <groupId>io.atesfactory</groupId>
+  <artifactId>evrl</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
+or Gradle (Kotlin)
+```kotlin
+implementation("io.atesfactory:evrl:1.0.0")
 ```
 ### Configuration
 Enable or disable EVRL via Spring property. Default is enabled (true) 
