@@ -1,4 +1,5 @@
 # EVRL
+[![CircleCI](https://dl.circleci.com/status-badge/img/circleci/Vtahz8XMi2i8xc2fF6QKY9/ALNgGtUizQBN8jckpLkhLL/tree/main.svg?style=svg)](https://dl.circleci.com/status-badge/redirect/circleci/Vtahz8XMi2i8xc2fF6QKY9/ALNgGtUizQBN8jckpLkhLL/tree/main)
 
 **A highly extensible last mile declarative resource loading and transformation library for Spring Boot.**
 
