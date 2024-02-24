@@ -110,7 +110,7 @@ In this case the Resource is an instance of `org.springframework.core.io.InputSt
         ...
         key-store: evrl://base64/env:KEY_STORE
         trust-store-file: file:///tmp/truststore.p12 
-                          # other resource loadings methods are still possible
+                          # other resource loading methods are still possible
 
 ```
 
@@ -197,7 +197,7 @@ io.atesfactory.evrl.ResourceFactoryRegistry.register(String.class, myResourceFac
 ```
 ## Limitations
 
-* Currently only properties with type `org.springframework.core.io.Resource` can be loaded from your config.
+* Currently, only properties with type `org.springframework.core.io.Resource` can be loaded from your config.
 Output instances are either `org.springframework.core.io.InputStreamResource` or `org.springframework.core.io.FileSystemResource`.
 * Transformer-Chain has to end either with java.io.File, or a byte[].
 To overcome this limitation you can add custom components
