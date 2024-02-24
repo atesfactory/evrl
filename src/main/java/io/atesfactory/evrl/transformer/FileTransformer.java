@@ -23,7 +23,7 @@ public class FileTransformer implements Transformer<byte[], File> {
             file = new File(transformerConfig.getConfig().get(0));
         }
 
-        if (!file.getParentFile().exists() && (file.getParentFile().mkdirs())) {
+        if (!file.getParentFile().exists() && !file.getParentFile().mkdirs()) {
             throw new TransformerException("Could not create dirs in path: " + file.getAbsolutePath());
         }
 

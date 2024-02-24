@@ -66,7 +66,7 @@ class PropertiesTests {
 
         Resource file = exampleProperties.getFileBased();
         try {
-            String text = convertInputStreamtoString(resource.getInputStream());
+            String text = convertInputStreamtoString(file.getInputStream());
 
             Assertions.assertEquals(fileContent, text);
         } finally {
