@@ -11,11 +11,6 @@ Right now EVRL is only applicable for `org.springframework.core.io.Resource`.
 If there is interest in more supported destination types then I will extend it.
 It is also possible to use the `@Value` annotation to load a Resource with EVRL.
 
-On a highlevel EVRL does the following: 
-```
-<parse evrl expression> --> <load data> --> <transform data> --> <create Resource>
-```
-
 The library is lightweight, easily extensible and maintainability, and should be easy to comprehend.
 Code coverage is 100%.
 
@@ -28,7 +23,7 @@ Below you can see the EVRL usage, available loaders, and transformers.
 * Spring Boot 3.x.x+/2.7.x+
 * Java 8
 ### Install
-
+EVRL is ready to go as soon as the dependency is present:
 ```xml
 <depencency>
   ... 
@@ -41,6 +36,10 @@ Enable or disable EVRL via Spring property. Default is enabled (true)
 ```
 
 ### Syntax
+On a highlevel EVRL does the following:
+```
+<parse evrl expression> --> <load data> --> <transform data> --> <create Resource>
+```
 ```yaml
     evrl://base64/env:MY_ENV # loads env content, base64 decodes it, and returns a org.springframework.core.io.Resource
     evrl://<transformer-chain>/<loader>
