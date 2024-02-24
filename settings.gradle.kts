@@ -1,1 +1,1 @@
-rootProject.name = "EVRL"
+rootProject.name = "evrl"

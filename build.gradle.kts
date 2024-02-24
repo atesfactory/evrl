@@ -1,8 +1,4 @@
-import org.springframework.boot.gradle.tasks.bundling.BootJar
-
 plugins {
-    id("org.springframework.boot") version "2.7.0"
-    id("io.spring.dependency-management") version "1.1.4"
     java
     `maven-publish`
     signing
@@ -15,20 +11,15 @@ version = "1.0.0-SNAPSHOT"
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
-    withSourcesJar()
 }
 
 repositories {
     mavenCentral()
 }
 
-tasks.withType<BootJar> {
-    enabled = false
-}
-
 dependencies {
-    compileOnly("org.springframework.boot:spring-boot-starter")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    compileOnly("org.springframework.boot:spring-boot-starter:2.7.0")
+    testImplementation("org.springframework.boot:spring-boot-starter-test:2.7.0")
 }
 
 tasks.withType<Test> {
@@ -41,7 +32,7 @@ publishing {
             from(components["java"])
 
             pom {
-                name.set("EVRL")
+                name.set("evrl")
                 description.set("A highly extensible last mile declarative resource loading and transformation library for Spring Boot")
                 url.set("https://github.com/atesfactory/evrl")
                 licenses {
@@ -50,6 +41,7 @@ publishing {
                         url.set("https://opensource.org/license/mit")
                     }
                 }
+
 
                 developers {
                     developer {
