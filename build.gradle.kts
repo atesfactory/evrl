@@ -6,11 +6,26 @@ plugins {
 }
 
 group = "io.atesfactory"
-version = "1.0.0-SNAPSHOT"
+version = "1.0.0"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_1_8
     targetCompatibility = JavaVersion.VERSION_1_8
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.withType<Javadoc> {
+    options {
+        this as StandardJavadocDocletOptions
+        addBooleanOption("Xdoclint:none", true)
+        addStringOption("Xmaxwarns", "1")
+    }
+}
+
+tasks.withType<Javadoc> {
+    (options as StandardJavadocDocletOptions).addBooleanOption("Xdoclint:none", true)
+    (options as StandardJavadocDocletOptions).addStringOption("Xmaxwarns", "1")
 }
 
 repositories {
