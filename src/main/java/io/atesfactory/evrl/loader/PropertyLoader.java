@@ -8,7 +8,7 @@ public class PropertyLoader implements Loader<String> {
         Environment environment = loaderContext.getEvrlSpringContext().getEnvironment();
         String property = environment.getProperty(loadable);
         if (property == null) {
-            throw new LoaderException("Could not find property or env named " + loadable);
+            throw new LoaderException("Could not find property or env named: " + loadable);
         }
         return property;
     }

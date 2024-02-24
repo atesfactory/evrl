@@ -7,26 +7,27 @@ import java.io.Serializable;
 public class FileTransformer implements Transformer<byte[], File> {
     @Override
     public File transform(TransformerContext transformerContext, TransformerConfig transformerConfig, Serializable input) {
+        try {
+            return transformWithinTryCatch(transformerConfig, input);
+        } catch (Exception e) {
+            throw new TransformerException(e);
+        }
+    }
+
+    private File transformWithinTryCatch(TransformerConfig transformerConfig, Serializable input) throws IOException {
         File file;
+
         if (transformerConfig.getConfig().isEmpty()) {
-            try {
-                file = File.createTempFile("evrl_", null);
-            } catch (IOException e) {
-                throw new TransformerException(e);
-            }
+            file = File.createTempFile("evrl_", null);
         } else {
             file = new File(transformerConfig.getConfig().get(0));
         }
 
-        if (!file.getParentFile().exists()) {
-            file.getParentFile().mkdirs();
+        if (!file.getParentFile().exists() && (file.getParentFile().mkdirs())) {
+            throw new TransformerException("Could not create dirs in path: " + file.getAbsolutePath());
         }
 
-        try {
-            java.nio.file.Files.write(file.toPath(), (byte[]) input);
-        } catch (java.io.IOException e) {
-            throw new TransformerException(e);
-        }
+        java.nio.file.Files.write(file.toPath(), (byte[]) input);
 
         return file;
     }

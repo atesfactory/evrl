@@ -24,9 +24,9 @@ Jump to the [Examples](#Examples) to see EVRL in action.
 ## Usage
 Below you can see the EVRL usage, available loaders, and transformers.
 
-### Requirements
-* Spring Boot 3.x.x+/2.6.x+
-* Java 17
+### Minimum Requirements
+* Spring Boot 3.x.x+/2.7.x+
+* Java 8
 ### Install
 
 ```xml

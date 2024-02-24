@@ -5,7 +5,7 @@ import io.atesfactory.evrl.configuration.EvrlSpringContext;
 public class LoaderContext {
    private final EvrlSpringContext evrlSpringContext;
 
-    LoaderContext(EvrlSpringContext evrlSpringContext) {
+    public LoaderContext(EvrlSpringContext evrlSpringContext) {
         this.evrlSpringContext = evrlSpringContext;
     }
 
