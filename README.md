@@ -60,7 +60,7 @@ On a highlevel EVRL does the following:
 `<loaders>` Loaders load data from a source
 ```yaml
     <loader-prefix>:<value>
-    e.g. env:MY_ENV to load the content of a environment variable named 'MY_ENV'
+    e.g. env:MY_ENV to load the content of an environment variable named 'MY_ENV'
 ```
 
 ### Built-in Loaders
